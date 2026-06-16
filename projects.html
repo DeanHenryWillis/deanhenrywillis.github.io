@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Dean Willis</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ1LBD2NJX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CZ1LBD2NJX');
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="nav-name" href="index.html">DW</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html" class="active">Projects</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header-section">
+  <div class="container page-header-inner">
+    <p>&nbsp;</p>
+    <div class="page-label">Portfolio</div>
+    <p>&nbsp;</p>
+    <h1 class="page-title">My <em>Projects</em></h1>
+    <p>&nbsp;</p>
+  </div>
+</header>
+
+<main>
+
+  <section class="project-section" id="edgar-pipeline">
+    <div class="container">
+      <div class="project-content">
+        <a class="project-eyebrow" href="https://github.com/DeanHenryWillis/ETL-pipeline" target="_blank" rel="noopener noreferrer">Project 01</a>
+        <p>&nbsp;</p>
+        <h2 class="project-title">SEC EDGAR Financial Data Pipeline</h2>
+        <div class="project-stack">Python · pandas · zipfile · requests · SQLAlchemy · MySQL</div>
+        <p class="project-overview">ETL pipeline that bulk downloads 10 years (1.82GB) of SEC EDGAR financial data across 40 quarterly ZIP files. Files are extracted and renamed locally, filtered for R&D, Net Income, and Revenue, then loaded into MySQL for downstream analysis.</p>
+
+        <div class="sub-label">Pipeline Steps</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text">Bulk download 40 quarterly ZIP files from SEC EDGAR</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Extract and rename <code>num.txt</code> and <code>sub.txt</code> from each zip</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Filter for R&amp;D, Net Income, and Revenue</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text">Clean and type-convert data</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-text">Load into MySQL — <code>financial_data</code> and <code>metadata</code> tables</div></div>
+        </div>
+
+        <div class="run-block">
+          <div class="sub-label">How to Run</div>
+          <div class="run-step"><div class="run-num">1</div><div class="run-text">Create a MySQL database called <code>aggregated_stock_data</code></div></div>
+          <div class="run-step"><div class="run-num">2</div><div class="run-text">Create tables using schema in <code>queries_edgar.sql</code></div></div>
+          <div class="run-step"><div class="run-num">3</div><div class="run-text">Fill in your MySQL credentials in the script</div></div>
+          <div class="run-step"><div class="run-num">4</div><div class="run-text">Run <code>edgbatch_DL&amp;EXT_SQL.py</code></div></div>
+        </div>
+
+          <a href="walkthrough.html#edgar-pipeline"
+          style="display:inline-block;margin-top:28px;padding:10px 22px;background:#0f172a;color:#fff;text-decoration:none;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;border-radius:6px;">See it in action →</a>
+          <p>&emsp;</p>
+          <p>&emsp;</p>
+
+        <div class="two-col">
+          <div class="info-block">
+            <div class="info-block-title">Data Source</div>
+            <p>SEC EDGAR Financial Statement Data Sets (2014 Q1 – 2023 Q4)</p>
+            <a href="https://www.sec.gov/data-research/sec-markets-data/financial-statement-data-sets-archive" target="_blank">sec.gov/data-research →</a>
+          </div>
+          <div class="info-block">
+            <div class="info-block-title">Tools Used</div>
+            <ul>
+              <li>Python — pandas, zipfile, requests, SQLAlchemy</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section" id="rd-spikes">
+    <div class="container">
+      <div class="project-content">
+        <a class="project-eyebrow" href="https://github.com/DeanHenryWillis/Edgar-rd-pipeline" target="_blank" rel="noopener noreferrer">Project 02</a>
+        <p>&nbsp;</p>
+        <h2 class="project-title">R&amp;D Expense Spikes Predict Short-Term Price Declines</h2>
+        <div class="project-stack">Python · yfinance · zipfile · requests · SQLAlchemy · MySQL</div>
+        <p class="project-overview">R&amp;D expense spikes predict short-term price declines with 55–68% accuracy across 1,404 public companies. 1.82GB SEC EDGAR data, ETL from zip to MySQL to Python, enriched with yfinance price data.</p>
+
+        <div class="sub-label">Definitions</div>
+        <div class="defs">
+          <div class="def-item"><div class="def-num">01</div><div class="def-text">A spike is identified when exactly one quarter's R&amp;D expense exceeds the average of all three quarters for that year.</div></div>
+          <div class="def-item"><div class="def-num">02</div><div class="def-text">Spike percent is defined by the percentage increase in spending relative to the three-quarter average.</div></div>
+          <div class="def-item"><div class="def-num">03</div><div class="def-text">Spikes are sorted into buckets: 0–10%, 10–20%, 20–50%, 50–100%, 100%+.</div></div>
+          <div class="def-item"><div class="def-num">04</div><div class="def-text">Price decreases are measured using stock prices taken 30 days before and after the spike date.</div></div>
+        </div>
+
+        <div class="sub-label">Findings</div>
+        <div class="findings-wrap">
+          <table class="findings-table">
+            <thead>
+              <tr>
+                <th>R&amp;D Spike Magnitude</th>
+                <th>Companies</th>
+                <th>Drop Rate</th>
+                <th class="bar-cell"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0 – 10%</td><td>~280</td>
+                <td><span class="drop-rate">55.6%</span></td>
+                <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:55.6%"></div></div></td>
+              </tr>
+              <tr>
+                <td>10 – 20%</td><td>~280</td>
+                <td><span class="drop-rate">61.1%</span></td>
+                <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:61.1%"></div></div></td>
+              </tr>
+              <tr>
+                <td>20 – 50%</td><td>~280</td>
+                <td><span class="drop-rate">67.3%</span></td>
+                <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:67.3%"></div></div></td>
+              </tr>
+              <tr>
+                <td>50 – 100%</td><td>~280</td>
+                <td><span class="drop-rate">68.5%</span></td>
+                <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:68.5%"></div></div></td>
+              </tr>
+              <tr>
+                <td>100%+</td><td>~284</td>
+                <td><span class="drop-rate">66.1%</span></td>
+                <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:66.1%"></div></div></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="findings-note">Tracking post-spike short-term price behavior across all bands suggests a systematic and repeatable market inefficiency.</p>
+        </div>
+
+        <div class="sub-label">Analytical Queries</div>
+        <div class="queries">
+          <ol>
+            <li>Ranking the first 10 companies by spike percent</li>
+            <li>Sorting all companies' average spike percentage into 4 buckets</li>
+            <li>Comparing the spike percentage to the prior filing date's spike percentage</li>
+            <li>Finding the running average of spike percentage per company</li>
+            <li>Finding the max spike percentage per company</li>
+          </ol>
+        </div>
+
+        <div class="sub-label">Limitations</div>
+        <div class="limitations">
+          <ul>
+            <li>Stock price window of 30 days may predate 10-K filings</li>
+            <li>Only 3 quarters of data available — Q4 not filed in 10-K</li>
+            <li>Data range limited to 2014–2023, not live</li>
+            <li>Some data lost due to ticker symbol resolution issues</li>
+          </ul>
+          <p class="limitation-note">A version addressing all listed limitations is planned.</p>
+        </div>
+        <a href="walkthrough.html#rd-spikes" style="display:inline-block;margin-bottom:30px;padding:10px 22px;background:#0f172a;color:#fff;text-decoration:none;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;border-radius:6px;">See it in action →</a>
+
+        <div class="two-col">
+          <div class="info-block">
+            <div class="info-block-title">Data Source</div>
+            <p>SEC EDGAR Financial Statement Data Sets (2014 Q1 – 2023 Q4)</p>
+            <a href="https://www.sec.gov/data-research/sec-markets-data/financial-statement-data-sets-archive" target="_blank">sec.gov/data-research →</a>
+          </div>
+          <div class="info-block">
+            <div class="info-block-title">Tools Used</div>
+            <ul>
+              <li>Python — yfinance, zipfile, requests, SQLAlchemy</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section" id="expense-tracker">
+    <div class="container">
+      <div class="project-content">
+        <a class="project-eyebrow" href="https://github.com/DeanHenryWillis/Net-Worth-Tracker" target="_blank" rel="noopener noreferrer">Project 03</a>
+        <p>&nbsp;</p>
+        <h2 class="project-title">Personal Finance Tracker</h2>
+        <div class="project-stack">Python · FastAPI · SQLAlchemy · SQLite · APScheduler</div>
+        <p>Showcasing a fulling working SQLite Database with a mobile app.</p>
+        <p>&nbsp;</p>
+        <p class="project-overview">A mobile expense and subscription tracker with a FastAPI backend. Full CRUD for expenses and subscriptions, automatic recurring expense detection, and spending summaries broken down by day, month, year, category and yearly projections.</p>
+
+        <div class="sub-label">Actual App Running on Expo Go</div>
+        <div class="iphone-wrap">
+          <div class="iphone-shell">
+                <div class="iphone-screen">
+                  <img src="IMG_6105.png" alt="Iphone App">
+              </div>
+
+              <div class="iphone-placeholder">
+                <div class="iphone-placeholder-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.5">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-label">Features</div>
+        <div class="feature-list">
+          <ul>
+            <li>Full CRUD for expenses and subscriptions</li>
+            <li>Automatic subscription management</li>
+            <li>Spending summaries by day, month, year, and all-time</li>
+            <li>Category breakdowns across all transactions</li>
+            <li>Recurring expense detection with annualized projections</li>
+          </ul>
+        </div>
+
+        <div class="sub-label">API Endpoints</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text"><code>GET /expenses</code> — retrieve all recorded expenses</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><code>POST /expenses</code> — add a new expense entry</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><code>PUT /expenses/{id}</code> — update an existing expense</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><code>DELETE /expenses/{id}</code> — remove an expense</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-text"><code>GET /subscription</code> · <code>POST</code> · <code>PUT</code> · <code>DELETE</code> — full subscription management</div></div>
+        </div>
+        <a href="walkthrough.html#finance-tracker" style="display:inline-block;margin-bottom:30px;padding:10px 22px;background:#0f172a;color:#fff;text-decoration:none;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;border-radius:6px;">See it in action →</a>
+        <div class="info-block">
+          <div class="info-block-title">Tools Used</div>
+          <ul>
+            <li>Python — FastAPI, SQLAlchemy, APScheduler</li>
+            <li>SQLite</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section" id="anomaly-detector">
+    <div class="container">
+      <div class="project-content">
+        <a class="project-eyebrow" href="https://github.com/DeanHenryWillis/sp500-anomaly-detector" target="_blank" rel="noopener noreferrer">Project 04</a>
+        <p>&nbsp;</p>
+        <h2 class="project-title">S&amp;P 500 Anomaly Detection</h2>
+        <div class="project-stack">Python · scikit-learn · FastAPI · React · Claude AI · yfinance</div>
+        <p class="project-overview">Real-time anomaly detection across all S&amp;P 500 stocks using Z-Score and Isolation Forest, with AI-generated summaries explaining the likely cause of each anomaly using recent news. Deployed as a full-stack application with a FastAPI backend and React frontend.</p>
+
+        <div class="sub-label">How It Works</div>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-text">Pulls 90 days of price and volume data for all 500 S&amp;P 500 constituents via yfinance</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Flags anomalous days using Z-Score (|z| &gt; 3) on both daily return and volume</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Runs Isolation Forest as a second detection layer high confidence where both models agree</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text">Fetches relevant news headlines for each anomaly via NewsAPI</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-text">Claude AI generates summaries explaining each anomaly</div></div>
+          <div class="step"><div class="step-num">6</div><div class="step-text">Results served via FastAPI and rendered in a filterable, searchable React dashboard</div></div>
+        </div>
+
+        <div class="sub-label">Detection Methods</div>
+        <div class="defs">
+          <div class="def-item"><div class="def-num">01</div><div class="def-text">Z-Score measures how many standard deviations a stock's return or volume deviates from its own 90-day history. Threshold set at |z| &gt; 3.</div></div>
+          <div class="def-item"><div class="def-num">02</div><div class="def-text">Isolation Forest detects outliers by measuring how easily a data point can be isolated from the rest. Catches complex patterns missed by Z-Score alone.</div></div>
+          <div class="def-item"><div class="def-num">03</div><div class="def-text">High confidence anomalies are rows flagged by both models — approximately 1% of all observations across 500 stocks.</div></div>
+        </div>
+        <a href="walkthrough.html#anomaly-detector" style="display:inline-block;margin-bottom:28px;padding:10px 22px;background:#0f172a;color:#fff;text-decoration:none;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;border-radius:6px;">More Info →</a>
+        <div class="sub-label">Live App</div>
+        <p class="project-overview">The dashboard shows all high confidence anomalies with their return and volume Z-scores, signal type, and AI-generated summary. Click any row to expand the analysis.</p>
+        <p>&nbsp;</p>
+        <a href="https://sp500-anomaly-detector.vercel.app" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'launch_app_click', {'event_category': 'engagement', 'event_label': 'SP500 Anomaly Detector'})"style="display:inline-block;padding:10px 22px;background:#0f172a;color:#fff;text-decoration:none;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;border-radius:6px;">Launch LIVE APP →</a>
+        <div style="margin-top:15px;"  class="project-stack">(Allow one minute to load)</div>
+        <p>&nbsp;</p>
+
+        <div class="two-col">
+          <div class="info-block">
+            <div class="info-block-title">Data Source</div>
+            <p>Yahoo Finance via yfinance — 90-day rolling window, all S&amp;P 500 constituents</p>
+            <a href="https://github.com/DeanHenryWillis/sp500-anomaly-detector" target="_blank">GitHub →</a>
+          </div>
+          <div class="info-block">
+            <div class="info-block-title">Tools Used</div>
+            <ul>
+              <li>Python — pandas, yfinance, scikit-learn</li>
+              <li>FastAPI · Render</li>
+              <li>React · Vercel</li>
+              <li>Claude AI (Anthropic)</li>
+              <li>NewsAPI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer-section">
+  <div class="container footer-inner">
+    <span class="footer-copy">2026 Dean Willis</span>
+    <div class="footer-links">
+      <a href="mailto:Deanwillis@outlook.com">Email</a>
+      <a href="https://github.com/DeanHenryWillis" target="_blank">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
