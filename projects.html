@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Dean Willis</title>
+<title>Projects Dean Willis</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CZ1LBD2NJX"></script>
@@ -53,7 +53,7 @@
           <div class="step"><div class="step-num">2</div><div class="step-text">Extract and rename <code>num.txt</code> and <code>sub.txt</code> from each zip</div></div>
           <div class="step"><div class="step-num">3</div><div class="step-text">Filter for R&amp;D, Net Income, and Revenue</div></div>
           <div class="step"><div class="step-num">4</div><div class="step-text">Clean and type-convert data</div></div>
-          <div class="step"><div class="step-num">5</div><div class="step-text">Load into MySQL — <code>financial_data</code> and <code>metadata</code> tables</div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-text">Load into MySQL <code>financial_data</code> and <code>metadata</code> tables</div></div>
         </div>
 
         <div class="run-block">
@@ -161,7 +161,7 @@
         <div class="limitations">
           <ul>
             <li>Stock price window of 30 days may predate 10-K filings</li>
-            <li>Only 3 quarters of data available — Q4 not filed in 10-K</li>
+            <li>Only 3 quarters of data available (Q4 not filed in 10-K)</li>
             <li>Data range limited to 2014–2023, not live</li>
             <li>Some data lost due to ticker symbol resolution issues</li>
           </ul>
@@ -178,7 +178,7 @@
           <div class="info-block">
             <div class="info-block-title">Tools Used</div>
             <ul>
-              <li>Python — yfinance, zipfile, requests, SQLAlchemy</li>
+              <li>Python  yfinance, zipfile, requests, SQLAlchemy</li>
               <li>MySQL</li>
             </ul>
           </div>
@@ -271,7 +271,7 @@
         <div class="defs">
           <div class="def-item"><div class="def-num">01</div><div class="def-text">Z-Score measures how many standard deviations a stock's return or volume deviates from its own 90-day history. Threshold set at |z| &gt; 3.</div></div>
           <div class="def-item"><div class="def-num">02</div><div class="def-text">Isolation Forest detects outliers by measuring how easily a data point can be isolated from the rest. Catches complex patterns missed by Z-Score alone.</div></div>
-          <div class="def-item"><div class="def-num">03</div><div class="def-text">High confidence anomalies are rows flagged by both models — approximately 1% of all observations across 500 stocks.</div></div>
+          <div class="def-item"><div class="def-num">03</div><div class="def-text">High confidence anomalies are rows flagged by both models which is approximately 1% of all observations across 500 stocks.</div></div>
         </div>
         <a href="walkthrough.html#anomaly-detector" style="display:inline-block;margin-bottom:28px;padding:10px 22px;background:#0f172a;color:#fff;text-decoration:none;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.05em;border-radius:6px;">More Info →</a>
         <div class="sub-label">Live App</div>
@@ -284,13 +284,13 @@
         <div class="two-col">
           <div class="info-block">
             <div class="info-block-title">Data Source</div>
-            <p>Yahoo Finance via yfinance — 90-day rolling window, all S&amp;P 500 constituents</p>
+            <p>Yahoo Finance via yfinance, 90-day rolling window, all S&amp;P 500 constituents</p>
             <a href="https://github.com/DeanHenryWillis/sp500-anomaly-detector" target="_blank">GitHub →</a>
           </div>
           <div class="info-block">
             <div class="info-block-title">Tools Used</div>
             <ul>
-              <li>Python — pandas, yfinance, scikit-learn</li>
+              <li>Python pandas, yfinance, scikit-learn</li>
               <li>FastAPI · Render</li>
               <li>React · Vercel</li>
               <li>Claude AI (Anthropic)</li>
