@@ -37,7 +37,7 @@
         <a  class="project-eyebrow"  href="https://github.com/DeanHenryWillis/ETL-pipeline" target="_blank" rel="noopener noreferrer">Project 01</a>
     <h2 style="margin-top: 30px;"  class="wt-title">SEC EDGAR Financial <em>Data Pipeline</em></h2>
     <div class="wt-stack">Python · pandas · zipfile · requests · SQLAlchemy · MySQL</div>
-    <p class="wt-intro">An ETL pipeline that bulk downloads 10 years of SEC filing data, extracts it from 40 quarterly ZIP files, and loads it into MySQL — all in a single run. Here's what it actually looks like when it works.</p>
+    <p class="wt-intro">An ETL pipeline that bulk downloads 10 years of SEC filing data, extracts it from 40 quarterly ZIP files, and loads it into MySQL. This is what it actually looks like when it works.</p>
 
     <div class="shot-block">
       <div class="shot-frame">
@@ -46,7 +46,7 @@
       <div class="shot-text">
         <div class="shot-label">Step 1</div>
         <h3 class="shot-heading">Bulk downloading <em>40 quarters</em> at once</h3>
-        <p class="shot-body">The script pulls every quarterly ZIP from SEC EDGAR's archive — 2014 Q1 through 2023 Q3 — and downloads them one by one. The terminal output shows each file location as it lands.</p>
+        <p class="shot-body">The script pulls every quarterly ZIP from SEC EDGAR's archive(2014 Q1 through 2023 Q3) and downloads each one by one.</p>
         <div class="shot-stat">
           <strong>1.82 GB</strong>
           pulled from SEC EDGAR in a single script run
@@ -61,7 +61,7 @@
       <div class="shot-text">
         <div class="shot-label">Step 2</div>
         <h3 class="shot-heading">Extraction and <em>renaming</em></h3>
-        <p class="shot-body">Each ZIP contains 8 files. The pipeline extracts only <code>num.txt</code> and <code>sub.txt</code>, renames them per quarter (e.g. <code>2019Q2_num.txt</code>), and drops them into a clean output folder. 60 files, named and organized automatically.</p>
+        <p class="shot-body">Each ZIP contains 8 files. The pipeline extracts only <code>num.txt</code> and <code>sub.txt</code>, renames them per quarter (e.g. <code>2019Q2_num.txt</code>), and drops them into a clean output folder(60 files) which are then named and organized.</p>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
       <div class="shot-text">
         <div class="shot-label">Step 3</div>
         <h3 class="shot-heading">The <em>financial_data</em> table</h3>
-        <p class="shot-body">After filtering for R&D, Net Income, and Revenue and cleaning the data, rows are loaded into the financial_data table in MySQL. This is the table that powers Project 02. Every spike calculation runs against it. Each row ties a company to a specific metric, date, and dollar value.</p>
+        <p class="shot-body">After filtering for R&D, Net Income, and Revenue and cleaning the data, rows are loaded into the financial_data table in MySQL. Every spike calculation runs against this table. Each row ties a company to a specific metric, date, and dollar value.</p>
       </div>
     </div>
 
@@ -83,11 +83,11 @@
 
       <div class="shot-text">
         <div class="shot-label">Step 4</div>
-        <h3 class="shot-heading">Metadata table — <em>40 quarters tracked</em></h3>
-        <p class="shot-body">A companion metadata table logs every quarter ingested — source file, row count, and load timestamp. One row per quarter, 40 total. It's how you verify the pipeline ran cleanly without touching the main table.</p>
+        <h3 class="shot-heading">Metadata table <em>40 quarters tracked</em></h3>
+        <p class="shot-body">A companion metadata table logs every quarter ingested (source file, row count, load timestamp). One row per quarter, 40 total. Used to verify the pipeline ran cleanly without touching the main table.</p>
         <div class="shot-stat">
           <strong>40 rows</strong>
-          one per quarter, 2014 Q1 – 2023 Q3
+          one per quarter, (2014 Q1, 2023 Q3)
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@
         <a class="project-eyebrow" href="https://github.com/DeanHenryWillis/Edgar-rd-pipeline" target="_blank" rel="noopener noreferrer">Project 02</a>
     <h2 style="margin-top: 30px;" class="wt-title">R&D Expense Spikes Predict Short-Term <em>Price Declines</em></h2>
     <div class="wt-stack">Python · yfinance · SQLAlchemy · MySQL</div>
-    <p class="wt-intro">An original quantitative thesis tested across 1,404 public companies. The finding: R&D expense spikes reliably precede short-term stock price drops, and the bigger the spike, the stronger the signal — up to a point.</p>
+    <p class="wt-intro">An original quantitative thesis tested across 1,404 public companies. The finding: R&D expense spikes reliably precede short-term stock price drops, and the bigger the spike, the stronger the signal (up to a point).</p>
 
 
     <div class="shot-block">
@@ -115,7 +115,7 @@
       <div class="shot-text">
         <div class="shot-label">Query Output</div>
         <h3 class="shot-heading">Top 10 companies <em>by spike percent</em></h3>
-        <p class="shot-body">The first query ranks every company by their largest single-quarter R&D spike. The top 10 are dominated by micro-caps — small absolute dollar changes produce extreme percentages. The bucketing analysis accounts for this by grouping all 100%+ outliers together.</p>
+        <p class="shot-body">The first query ranks every company by their largest single-quarter R&D spike. The top 10 are dominated by micro-caps which are small absolute dollar changes that produce extreme percentages. The bucketing analysis accounts for this by grouping 100%+ outliers together.</p>
         <div class="shot-stat">
           <strong>15,493%</strong>
           largest single-quarter R&D spike in the dataset
@@ -131,7 +131,7 @@
       <div class="shot-text">
         <div class="shot-label">Bucketing</div>
         <h3 class="shot-heading">Companies sorted into <em>five bands</em></h3>
-        <p class="shot-body">Companies are sorted by their average spike percentage into five buckets: 0–10%, 10–20%, 20–50%, 50–100%, and 100%+. Each bucket contains roughly 280 companies — roughly equal distribution which makes the drop rate comparison meaningful.</p>
+        <p class="shot-body">Companies are sorted by their average spike percentage into five buckets: 0–10%, 10–20%, 20–50%, 50–100%, and 100%+. Each bucket contains roughly 280 companies.</p>
         <div class="shot-stat">
           <strong>1,404</strong>
             public companies analyzed across five spike bands
@@ -146,7 +146,7 @@
       <div class="shot-text">
         <div class="shot-label">The Finding</div>
         <h3 class="shot-heading">Drop rate climbs from <em>55.6% to 68.5%</em> as spikes get larger</h3>
-        <p class="shot-body">The core result: companies with small R&D spikes (0–10%) see prices drop 30 days later 55.6% of the time. As spike magnitude increases, that rate climbs — peaking at 68.5% for 50–100% spikes before pulling back slightly at 100%+ — likely where micro-cap outliers dilute the signal. A pattern that repeats across five independent groups of ~280 companies is not noise.</p>
+        <p class="shot-body">The core result: companies with small R&D spikes (0–10%) see prices drop 30 days later 55.6% of the time. As spike magnitude increases, that rate climbs peaking at 68.5% for 50–100% spikes before pulling back slightly at 100%+ likely where micro-cap outliers dilute the signal. A pattern that repeats across five independent groups of ~280 companies.</p>
         <div class="shot-stat">
           <strong>68.5%</strong>
           of companies with a 50–100% R&D spike saw prices fall within 30 days
@@ -161,7 +161,7 @@
       <div class="shot-text">
         <div class="shot-label">Window Functions</div>
         <h3 class="shot-heading">Running average <em>per company over time</em></h3>
-        <p class="shot-body">A running average of growth percentage per company using SQL window functions. Tracks whether a company's R&D behavior is getting more or less volatile over the 10-year window — useful for spotting companies that are ramping up research spend consistently versus one-time spikes.</p>
+        <p class="shot-body">A running average of growth percentage per company using SQL window functions. Tracks whether a company's R&D behavior is getting more or less volatile over the 10-year window this is useful for spotting companies that are ramping up research spend consistently versus one-time spikes.</p>
       </div>
     </div>
   </div>
@@ -177,7 +177,7 @@
         <a class="project-eyebrow" href="https://github.com/DeanHenryWillis/Net-Worth-Tracker" target="_blank" rel="noopener noreferrer">Project 03</a>
     <h2 style="margin-top: 30px;" class="wt-title">Personal Finance <em>Tracker</em></h2>
     <div class="wt-stack">Python · FastAPI · SQLAlchemy · SQLite · APScheduler</div>
-    <p class="wt-intro">A fully working mobile app running on Expo Go with a FastAPI backend. Built to actually use, not just demo — full CRUD, automatic subscription detection, and spending summaries by day, month, and year.</p>
+    <p class="wt-intro">A fully working mobile app running on Expo Go with a FastAPI backend. Built to actually use. It is a full CRUD, automatic subscription detection app, with spending summaries by day, month, and year.</p>
 
    <div class="shot-block"> 
         <div class="iphone-shell" style="flex-shrink: 0;">
@@ -188,7 +188,7 @@
         <div class="shot-text">
             <div class="shot-label">Main Screen</div>
             <h3 class="shot-heading">Spending summary <em>at a glance</em></h3>
-            <p class="shot-body">The dashboard shows today's spending, this month's total, and an all-time breakdown by category. Everything updates the moment a new expense is added — no refresh needed.</p>
+            <p class="shot-body">The dashboard shows today's spending, this month's total, and an all-time breakdown by category. Everything updates the moment a new expense is added (no refresh needed).</p>
         <div class="shot-stat">
             <strong>5 views</strong>
             day · month · year · all-time · category
@@ -206,7 +206,7 @@
   <div class="shot-text">
     <div class="shot-label">Adding an Expense</div>
         <h3 class="shot-heading">Full CRUD <em>on mobile</em></h3>
-        <p class="shot-body">Add, edit, and delete expenses directly in the app. The FastAPI backend handles validation and persistence to SQLite. PUT and DELETE endpoints mean nothing is permanent — every entry is editable.</p>
+        <p class="shot-body">Add, edit, and delete expenses directly in the app. The FastAPI backend handles validation and persistence to SQLite. PUT and DELETE endpoints mean nothing is permanent (every entry is editable).</p>
         </div>
     </div>
     
@@ -221,7 +221,7 @@
     <div class="shot-text">
         <div class="shot-label">Subscriptions</div>
             <h3 class="shot-heading">Auto-detected <em>recurring charges</em></h3>
-            <p class="shot-body">APScheduler runs in the background detecting recurring patterns in the expense history. Gas was flagged automatically — same merchant, regular interval. Manual subscriptions show days until next charge, and the dashboard projects the total annualized cost across everything.</p>
+            <p class="shot-body">APScheduler runs in the background detecting recurring patterns in the expense history. Gas was flagged automatically because of its regular spending interval. Manual subscriptions show days until next charge, and the dashboard projects the total annualized cost across everything.</p>
         <div class="shot-stat">
             <strong>$990/yr</strong>
             projected annual cost shown on dashboard
@@ -236,7 +236,7 @@
       <div class="shot-text">
         <div class="shot-label">Under the Hood</div>
         <h3 class="shot-heading">SQLite database <em>with real data</em></h3>
-        <p class="shot-body">The SQLite database holds both expenses and subscriptions tables. A screenshot of the raw DB — even opened in DB Browser — shows the schema is clean and the data is real. This is what "fully working" actually means.</p>
+        <p class="shot-body">The SQLite database holds both expenses and subscriptions tables. A screenshot of the raw DB showing the schema is clean and the data is real.</p>
       </div>
     </div>
   </div>
@@ -251,7 +251,7 @@
     <a class="project-eyebrow" href="https://github.com/DeanHenryWillis/sp500-anomaly-detector" target="_blank" rel="noopener noreferrer">Project 04</a>
     <h2 style="margin-top: 30px;" class="wt-title">S&P 500 <em>Anomaly Detection</em></h2>
     <div class="wt-stack">Python · scikit-learn · FastAPI · React · Claude AI · yfinance</div>
-    <p class="wt-intro">Real-time anomaly detection across all 500 S&P constituents, with AI-generated explanations for each signal. The only project here with a live deployed URL — and the most complex stack by far.</p>
+    <p class="wt-intro">Real-time anomaly detection across all 500 S&P constituents, with AI-generated explanations for each signal. The only project here with a live deployed URL, and the most complex stack by far.</p>
 
     <div class="shot-block full"> 
       <div class="shot-frame" style="aspect-ratio: 16/8;">
@@ -260,7 +260,7 @@
       <div class="shot-text">
         <div class="shot-label">The Dashboard</div>
         <h3 class="shot-heading">500 stocks, <em>filtered down to what matters</em></h3>
-        <p class="shot-body">The React frontend shows every high-confidence anomaly — flagged by both Z-Score and Isolation Forest — with return Z-score, volume Z-score, signal type, and ticker. Searchable and filterable. The table updates each time the detection pipeline runs.</p>
+        <p class="shot-body">The React frontend shows every high-confidence anomaly which are flagged by both Z-Score and Isolation Forest using  return Z-score, volume Z-score, signal type, and ticker. Searchable and filterable. The table updates each time the detection pipeline runs (not currently for the public it cost around 5 dollars per run).</p>
         <div class="shot-stat">
           <strong>~1%</strong>
           of all observations across 500 stocks flagged as high-confidence anomalies
@@ -276,7 +276,7 @@
       <div class="shot-text">
         <div class="shot-label">AI Summary</div>
         <h3 class="shot-heading">Claude explains <em>why it happened</em></h3>
-        <p class="shot-body">Click any anomaly row and Claude AI generates a plain-language explanation of the likely cause, pulling context from recent news headlines fetched via NewsAPI. Not just "this was anomalous" — but what probably drove it. That's the part that makes this useful rather than just interesting.</p>
+        <p class="shot-body">Click any anomaly row and Claude AI generates a plain-language explanation of the likely cause, pulling context from recent news headlines fetched via NewsAPI.</p>
       </div>
     </div>
 
@@ -288,7 +288,7 @@
       <div class="shot-text">
         <div class="shot-label">Search & Filter</div>
         <h3 class="shot-heading">Narrowing 500 stocks <em>to one ticker</em></h3>
-        <p class="shot-body">Type a ticker into the search bar and the table filters instantly. Useful for checking whether a specific stock has had any anomalous behavior in the last 90 days — a 5-second answer that would otherwise require pulling and analyzing the data manually.</p>
+        <p class="shot-body">Type a ticker into the search bar and the table filters instantly. Useful for checking whether a specific stock has had any anomalous behavior in the last 90 days (30 days now to lower API costs).</p>
       </div>
     </div>
 
@@ -299,7 +299,7 @@
       <div class="shot-text">
         <div class="shot-label">Detection Logic</div>
         <h3 class="shot-heading">Z-Score <em>and</em> Isolation Forest must agree</h3>
-        <p class="shot-body">A day is only marked high-confidence when both models flag it independently. Z-Score catches statistical outliers in return and volume. Isolation Forest catches complex patterns Z-Score misses. Requiring agreement filters noise and makes each flagged row meaningful.</p>
+        <p class="shot-body">A day is only marked high-confidence when both models flag it independently. Z-Score catches statistical outliers in return and volume. Isolation Forest catches complex patterns Z-Score misses.</p>
       </div>
     </div>
 
